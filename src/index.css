@@ -1,0 +1,385 @@
+/* CSS PARA COSAS GENERALES */
+
+:root {
+  --topBar: #754888;
+  --topBarFont: #f7fbf8;
+  --navBar: #ffffff;
+}
+
+#root {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+body{
+  margin: 0;
+}
+
+#root{
+  height: 100dvh; /* UNIDAD DE MEDIDA QUE TOMA EN CUENTA EL VIEWPORT DEL DISPOSITIVO */
+  -webkit-user-drag: none;
+  overflow: hidden;
+}
+
+.no-drag{
+  user-drag: none;
+}
+
+*::-webkit-scrollbar {
+    display: none; /* EVITA QUE HAYA SCROLLBARS EN LA PÁGINA (USADO PARA EL SIDEBAR) */
+}
+
+#root, #root *{
+    font-family: 'Poppins', sans-serif;
+}
+
+/* CSS PARA COSAS GENERALES */
+
+
+
+/* CSS PARA EL TOP CONTAINER */
+
+.topContainer{
+    height: 5%;
+    width: 100vw;
+    background-color: var(--topBar);
+    color: var(--topBarFont);
+}
+
+/* CSS PARA EL TOP CONTAINER */
+
+
+
+/* CSS PARA EL HEIGHT DEL TOP CONTAINER Y EL MAIN CONTAINER (DEBEN SUMAR 100%) */
+
+/* 
+  BODY
+    TOPCONTAINER
+      STUFF
+    MAINCONTAINER
+      SIDEBAR
+      CONTENT-CONTAINER
+*/
+
+.mainContainer{
+    height: 95%;
+}
+
+.topContainer h1{
+    font-size: 1.2rem;
+    height: min-content;
+}
+
+/* CSS PARA EL HEIGHT DEL TOP CONTAINER Y EL MAIN CONTAINER (DEBEN SUMAR 100%) */
+
+
+
+/* CSS PARA LOS ELEMENTOS INTERNOS DEL TOP CONTAINER */
+
+.topContainer div{
+  width: fit-content; 
+}
+
+.round{ /* CSS PARA CIRCULO CON INICIALES DE USUARIO */
+  width: 30px !important;
+  height: 30px;
+  border-radius: 100px;
+  padding: 5px;
+  background-color: #e1e1e1;
+  color: #555555;
+}
+
+.round *{ /* CSS PARA CIRCULO CON INICIALES DE USUARIO */
+  font-size: 0.7rem;
+  font-weight: bold;
+  margin: auto;
+}
+
+.left *, .right *{ 
+    margin: auto;
+}
+
+#hamburguer, .topContainer button{ /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR */
+  background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  width: fit-content;
+  height: 100%;
+  padding-inline: 1.5rem;
+}
+
+#hamburguer {
+    padding-inline: 1rem;
+}
+
+/* CSS PARA LOS ELEMENTOS INTERNOS DEL TOP CONTAINER */
+
+
+
+/* CSS PARA LOS ELEMENTOS INTERNOS DEL SIDEBAR */
+
+/* 
+  SIDEBAR 
+    WRAPPER
+      UL
+        LI
+          A
+            SVG
+            SPAN
+*/
+
+.sideBar, .sideBar *{
+    transition: all 0.5s ease;
+}
+
+.sideBar{
+  background-color: #e6dbe9;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden; /* CSS PARA OCULTAR LOS SOBRESALIENTES DEL NAVBAR */
+  overflow-y: scroll; /* CSS PARA SCROLL DEL NAVBAR VERTICALMENTE */
+}
+
+.wrapper{ /* CSS PARA WRAPPER QUE CAMBIA DE TAMAÑO EN NAVBAR -- CERRADO */
+  width: 300%;
+  overflow: hidden;
+}
+
+.sideBar li { /* CSS PARA QUE ELEMENTOS DEL NAVBAR LLENEN EL ESPACIO HORIZONTAL */
+  width: 100vw;
+  display: flex;
+}
+
+.sideBar li.hide{ /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
+  height:0px;
+  transition-delay: 0.25s !important;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -ms-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.sideBar li a { /* CSS PARA LINKS DEL NAVBAR -- CERRADO-GENERAL */
+    transition: color 0.1s ease;
+    display: flex;
+    align-items: center;
+}
+
+.sideBar li:not(.hide) a{ /* CSS PARA LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
+    height: 100% !important;
+    width: 100%;
+    color: #7e7e7e;
+    overflow: hidden;
+}
+
+.sideBar li.hide a{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
+  transition: color 0.2s ease;
+  color: #e6dbe9;
+}
+
+.sideBar li .i{ /* CSS PARA ICONOS DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE -- ABIERTO-VISIBLE */
+  width: 25px !important;
+  margin: 1.5rem;
+  margin-right: 5rem;
+}
+
+.sideBar span{ /* CSS PARA TEXTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
+  font-size: 1.2rem;
+  display: inline-block;
+}
+
+.sideBar li.hide .i{  /* CSS PARA ICONOS INVISIBLES DE ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO -- ABIERTO-OCULTO */
+  visibility: hidden;
+}
+
+.sideBar li.hide span{ /* CSS PARA SUB TEXTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
+  font-size: 0.9rem;
+}
+
+.sideBar li:hover:not(.hide){ /* CSS PARA HOVER DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */ 
+  background-color: #754888;
+}
+
+.sideBar li:not(.hide):hover *{ /* CSS PARA HOVER DE LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO */ 
+  color: white !important;
+}
+
+/* ELEMENTOS Y LINKS DEL NAVBAR ABIERTO ESTÁN DENTRO DE LOS MEDIA QUERIES */ 
+
+.open li.hide{ /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+  height: 3.5rem;
+  transition-delay: 0.1s !important;
+}
+
+.open li.hide a{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+  transition-delay: 0.2s;
+  color: #7e7e7e;
+}
+
+.open ul li:hover:not(.hide){ /* CSS PARA HOVER ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- ABIERTO-OCULTO */
+  background-color: #316db3;
+}
+
+.open ul li.hide:hover ~ li:not(.hide){ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
+  background-color: #316db3 !important;
+}
+
+.open ul li.hide:hover ~ li:not(.hide) a{ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-OCULTO */
+  color: white !important;
+}
+
+.open li.hide a:hover{ /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+  transition-delay: 0s;
+  color: #316db3;
+}
+
+/* CSS PARA LOS ELEMENTOS INTERNOS DEL SIDEBAR */
+
+
+
+/* CSS PARA LOS ELEMENTOS INTERNOS DEL CONTENIDO */
+
+/* 
+  CONTENT-CONTAINER
+    CONTENT - 90%
+    FOOTER - 10%
+      1 - LEFT
+      2 - CENTER
+      3 - RIGHT
+*/
+
+.contentContainer{
+    height: 100%;
+    grid-template-rows: 90% 10%; /* CSS PARA TAMAÑOS DEL CONTENIDO Y EL FOOTER */
+    overflow: scroll;
+    background-color: white;
+    opacity: 100%;
+    transition: all 1s ease;
+}
+
+.footer{
+    width: 100%;
+    align-items: center;
+    grid-template-columns: 1fr 4fr 1fr;
+}
+
+/* CSS PARA LOS ELEMENTOS INTERNOS DEL CONTENIDO */
+
+
+
+/* DEKSTOP */
+
+@media (min-width: 990px) {
+
+    .mainContainer{ /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
+        display: flex;
+    }
+
+    .sideBar{  /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
+        width: 80px;
+        max-width: 250px;
+    }
+
+    .contentContainer{ /* CSS PARA REDEFINIR EL WIDTH DENTRO DEL FLEX PARENT */
+        width: 100%;
+    }
+
+    .open{ /* CSS PARA APERTURA DEL SIDEBAR */
+        width: 18rem;
+    }
+
+    .open ul li .i{ /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
+        margin-right: 1rem;
+    }
+
+    .desktop, .desktop *{  /* CSS PARA APARECER ELEMENTOS CLASE DESKTOP */
+        display: inline-block;
+    }
+
+    .mobile, .mobile *{ /* CSS PARA DESAPARECER ELEMENTOS CLASE MOBILE */
+        display: none;
+    }
+}
+
+/* DEKSTOP */
+
+
+
+/* MOBILE */
+
+@media (max-width: 989px) {
+
+    .topContainer button *{  /* CSS PARA DISMINUIR EL FONTSIZE DE BOTONES EN EL TOPBAR */
+        font-size: 0.9rem !important;
+    }
+
+        
+    .topContainer button,#hamburguer { /* CSS PARA DISMINUIR EL PADDING DE BOTONES EN TOPBAR */
+        padding-inline: 1.2rem !important;
+    }
+
+    .topContainer h1{ /* CSS PARA DISMINUIR EL FONTSIZE DE H1 EN EL TOPBAR */
+        font-size: 1rem;
+    }
+
+    .mainContainer{ /* CSS PARA QUE SIDEBAR FLOTE SOBRE EL CONTENIDO DE LA DERECHA */
+      display: grid;
+      grid-template-columns: 55px auto; /* CSS PARA DEFINIR TAMAÑO DE SIDEBAR Y CONTENT-CONTAINER */
+    }
+
+    .sideBar li .i{ /* CSS PARA DISMINUIR FONTSIZE Y MÁRGENES DE ICONOS EN SIDEBAR */
+        margin: 1rem;
+        margin-right: 5rem;
+        font-size: 0.9rem;
+    }
+
+    .sideBar span{ /* CSS PARA DISMINUIR FONTSIZE DE SPAN EN SIDEBAR */
+        font-size: 0.8rem;
+    }
+
+    .sideBar .hide span{ /* CSS PARA DISMINUIR FONTSIZE DE SPAN EN SIDEBA OCULTOS POR DEFECTO */
+        font-size: 0.6rem !important;
+    }
+
+    .open{ /* CSS PARA APERTURA DEL SIDEBAR */
+        width: 300%;
+    }
+
+    .open .wrapper .i{ /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
+        margin-right: 0.5rem;
+    }
+
+    .open + .contentContainer{ /* CSS PARA OCULTAR CONTENIDO MIENTRAS SIDEBAR ABIERTO */
+        opacity: 0.15;
+    }
+    
+    .desktop, .desktop *{  /* CSS PARA DESAPARECER ELEMENTOS CLASE DESKTOP */
+        display: none;
+    }
+
+    .mobile, .mobile *{ /* CSS PARA APARECER ELEMENTOS CLASE MOBILE */
+        display: inline-block;
+    }
+
+}
+
+/* MOBILE */
