@@ -6,20 +6,6 @@
   --navBar: #ffffff;
 }
 
-#root {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
 *{
   box-sizing: border-box;
 }
@@ -112,7 +98,7 @@ body{
     margin: auto;
 }
 
-#hamburguer, .topContainer button{ /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR */
+#hamburguer, .topContainer button, .usButton{ /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR */
   background: none;
 	color: inherit;
 	border: none;
@@ -122,6 +108,13 @@ body{
 	outline: inherit;
   width: fit-content;
   height: 100%;
+}
+
+.iconHiding {
+  display: none;
+}
+
+.topContainer button{
   padding-inline: 1.5rem;
 }
 
@@ -178,20 +171,24 @@ body{
   transition: all 0.5s ease;
 }
 
-.sideBar li a { /* CSS PARA LINKS DEL NAVBAR -- CERRADO-GENERAL */
+.sideBar li button { /* CSS PARA LINKS DEL NAVBAR -- CERRADO-GENERAL */
     transition: color 0.1s ease;
     display: flex;
     align-items: center;
 }
 
-.sideBar li:not(.hide) a{ /* CSS PARA LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
+.sideBar li:not(.hide) button{ /* CSS PARA LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
     height: 100% !important;
     width: 100%;
     color: #7e7e7e;
     overflow: hidden;
 }
 
-.sideBar li.hide a{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
+.sideBar li.hide button{
+  width: 100%;
+}
+
+.sideBar li.hide button{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
   transition: color 0.2s ease;
   color: #e6dbe9;
 }
@@ -215,11 +212,11 @@ body{
   font-size: 0.9rem;
 }
 
-.sideBar li:hover:not(.hide){ /* CSS PARA HOVER DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */ 
+.sideBar li:hover:not(.hide), .isActive:not(.hide), .hide.isActive ~ li:not(.hide){ /* CSS PARA HOVER DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */ 
   background-color: #754888;
 }
 
-.sideBar li:not(.hide):hover *{ /* CSS PARA HOVER DE LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO */ 
+.sideBar li:not(.hide):hover *, .isActive:not(.hide) *, .hide.isActive ~ li:not(.hide) *{ /* CSS PARA HOVER DE LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO */ 
   color: white !important;
 }
 
@@ -230,24 +227,24 @@ body{
   transition-delay: 0.1s !important;
 }
 
-.open li.hide a{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+.open li.hide button{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
   transition-delay: 0.2s;
   color: #7e7e7e;
 }
 
-.open ul li:hover:not(.hide){ /* CSS PARA HOVER ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- ABIERTO-OCULTO */
+.open ul li:hover:not(.hide), .open .isActive:not(.hide){ /* CSS PARA HOVER ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- ABIERTO-OCULTO */
   background-color: #316db3;
 }
 
-.open ul li.hide:hover ~ li:not(.hide){ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
+.open ul li.hide:hover ~ li:not(.hide), .open .hide.isActive ~ li:not(.hide), .open .hide.isActive ~ li:not(.hide){ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
   background-color: #316db3 !important;
 }
 
-.open ul li.hide:hover ~ li:not(.hide) a{ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-OCULTO */
+.open ul li.hide:hover ~ li:not(.hide) button, .open .hide.isActive ~ li:not(.hide) button, .open .hide.isActive ~ li:not(.hide) button{ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-OCULTO */
   color: white !important;
 }
 
-.open li.hide a:hover{ /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+.open li.hide button:hover, .open .hide.isActive button{ /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
   transition-delay: 0s;
   color: #316db3;
 }
@@ -274,6 +271,10 @@ body{
     background-color: white;
     opacity: 100%;
     transition: all 1s ease;
+}
+
+.content {
+  /* height: 100%; */
 }
 
 .footer{

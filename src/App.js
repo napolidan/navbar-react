@@ -1,24 +1,28 @@
-import React, { useState } from "react";
 import MainContainer from "./components/MainContainer";
 import TopContainer from "./components/TopContainer";
-import { faArrowRight, faBars } from "@fortawesome/free-solid-svg-icons";
 
 
 const App = () => {
-    
-    const [className,setClassName] = useState('');
-    const [icon, setIcon] = useState(faArrowRight)
 
     const handleLogoClick = () => {
-        setClassName(className == '' ? 'open' : '')
-        setIcon(icon == faArrowRight ? faBars : faArrowRight)
-        console.log(icon)
+        document.getElementById('sideBar').classList.toggle('open')
+        var elements = document.getElementsByClassName("hamburguerIcon");
+        for(var i = 0; i < elements.length; i++) {
+            elements[i].classList.toggle('iconHiding')
+        }
+    }
+
+    const openSideBar = () => {
+        document.getElementById('sideBar').classList.add('open')
+        var elements = document.getElementsByClassName("hamburguerIcon");
+        elements[0].classList.add('iconHiding')
+        elements[1].classList.remove('iconHiding')
     }
     
     return (
         <>
-            <TopContainer onLogoClick={handleLogoClick} icon={icon}/>
-            <MainContainer className={className}/>
+            <TopContainer onLogoClick={handleLogoClick}/>
+            <MainContainer openSideBar={openSideBar}/>
         </>
     )
 }
