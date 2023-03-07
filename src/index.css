@@ -2,8 +2,12 @@
 
 :root {
   --topBar: #754888;
+  --hoverLi: #754888;
+  --hoverLiClosed: #316db3;
   --topBarFont: #f7fbf8;
-  --navBar: #ffffff;
+  --navBar: #e6dbe9;
+  --navBarFont: white;
+  --fontNav: #7e7e7e;
 }
 
 *{
@@ -60,11 +64,11 @@ body{
       CONTENT-CONTAINER
 */
 
-.mainContainer{
+.mainContainer {
     height: 95%;
 }
 
-.topContainer h1{
+.topContainer h1 {
     font-size: 1.2rem;
     height: min-content;
 }
@@ -75,11 +79,11 @@ body{
 
 /* CSS PARA LOS ELEMENTOS INTERNOS DEL TOP CONTAINER */
 
-.topContainer div{
+.topContainer div {
   width: fit-content; 
 }
 
-.round{ /* CSS PARA CIRCULO CON INICIALES DE USUARIO */
+.round { /* CSS PARA CIRCULO CON INICIALES DE USUARIO */
   width: 30px !important;
   height: 30px;
   border-radius: 100px;
@@ -88,17 +92,17 @@ body{
   color: #555555;
 }
 
-.round *{ /* CSS PARA CIRCULO CON INICIALES DE USUARIO */
+.round * { /* CSS PARA CIRCULO CON INICIALES DE USUARIO */
   font-size: 0.7rem;
   font-weight: bold;
   margin: auto;
 }
 
-.left *, .right *{ 
+.left *, .right * { 
     margin: auto;
 }
 
-#hamburguer, .topContainer button, .usButton{ /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR */
+#hamburguer, .topContainer button, button { /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR */
   background: none;
 	color: inherit;
 	border: none;
@@ -114,7 +118,7 @@ body{
   display: none;
 }
 
-.topContainer button{
+.topContainer button {
   padding-inline: 1.5rem;
 }
 
@@ -138,12 +142,12 @@ body{
             SPAN
 */
 
-.sideBar, .sideBar *{
+.sideBar, .sideBar * {
     transition: all 0.5s ease;
 }
 
-.sideBar{
-  background-color: #e6dbe9;
+.sideBar {
+  background-color: var(--navBar);
   z-index: 1;
   height: 100%;
   width: 100%;
@@ -151,7 +155,7 @@ body{
   overflow-y: scroll; /* CSS PARA SCROLL DEL NAVBAR VERTICALMENTE */
 }
 
-.wrapper{ /* CSS PARA WRAPPER QUE CAMBIA DE TAMAÑO EN NAVBAR -- CERRADO */
+.wrapper { /* CSS PARA WRAPPER QUE CAMBIA DE TAMAÑO EN NAVBAR -- CERRADO */
   width: 300%;
   overflow: hidden;
 }
@@ -161,13 +165,13 @@ body{
   display: flex;
 }
 
-.sideBar li.hide{ /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
+.sideBar li.hide { /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
   height:0px;
   transition-delay: 0.25s !important;
-  -webkit-transition: all 0.5s ease;
+  /* -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -ms-transition: all 0.5s ease;
-  -o-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease; */
   transition: all 0.5s ease;
 }
 
@@ -177,76 +181,81 @@ body{
     align-items: center;
 }
 
-.sideBar li:not(.hide) button{ /* CSS PARA LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
+.sideBar li:not(.hide) button { /* CSS PARA LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
     height: 100% !important;
     width: 100%;
-    color: #7e7e7e;
+    color: var(--fontNav);
     overflow: hidden;
 }
 
-.sideBar li.hide button{
+.sideBar li.hide button {
   width: 100%;
-}
-
-.sideBar li.hide button{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
   transition: color 0.2s ease;
-  color: #e6dbe9;
+  color: var(--navBar);
 }
 
-.sideBar li .i{ /* CSS PARA ICONOS DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE -- ABIERTO-VISIBLE */
+.sideBar li .i { /* CSS PARA ICONOS DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE -- ABIERTO-VISIBLE */
   width: 25px !important;
   margin: 1.5rem;
   margin-right: 5rem;
 }
 
-.sideBar span{ /* CSS PARA TEXTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
+.sideBar span { /* CSS PARA TEXTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
   font-size: 1.2rem;
   display: inline-block;
 }
 
-.sideBar li.hide .i{  /* CSS PARA ICONOS INVISIBLES DE ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO -- ABIERTO-OCULTO */
+.sideBar li.hide .i {  /* CSS PARA ICONOS INVISIBLES DE ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO -- ABIERTO-OCULTO */
   visibility: hidden;
 }
 
-.sideBar li.hide span{ /* CSS PARA SUB TEXTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
+.sideBar li.hide span { /* CSS PARA SUB TEXTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO */
   font-size: 0.9rem;
 }
 
-.sideBar li:hover:not(.hide), .isActive:not(.hide), .hide.isActive ~ li:not(.hide){ /* CSS PARA HOVER DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */ 
-  background-color: #754888;
+.sideBar li:hover:not(.hide),
+.isActive:not(.hide),
+.hide.isActive ~ li:not(.hide) { /* CSS PARA HOVER DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */ 
+  background-color: var(--hoverLi);
 }
 
-.sideBar li:not(.hide):hover *, .isActive:not(.hide) *, .hide.isActive ~ li:not(.hide) *{ /* CSS PARA HOVER DE LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO */ 
-  color: white !important;
+.sideBar li:not(.hide):hover *,
+.isActive:not(.hide) *,
+.hide.isActive ~ li:not(.hide) * { /* CSS PARA HOVER DE LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO */ 
+  color: var(--navBarFont) !important;
 }
 
 /* ELEMENTOS Y LINKS DEL NAVBAR ABIERTO ESTÁN DENTRO DE LOS MEDIA QUERIES */ 
 
-.open li.hide{ /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+.open li.hide { /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
   height: 3.5rem;
-  transition-delay: 0.1s !important;
+  transition-delay: 0.03s !important;
 }
 
-.open li.hide button{ /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+.open li.hide button { /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
   transition-delay: 0.2s;
-  color: #7e7e7e;
+  color: var(--fontNav);
 }
 
-.open ul li:hover:not(.hide), .open .isActive:not(.hide){ /* CSS PARA HOVER ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- ABIERTO-OCULTO */
-  background-color: #316db3;
+.open ul li:hover:not(.hide),
+.open .isActive:not(.hide) { /* CSS PARA HOVER ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- ABIERTO-OCULTO */
+  background-color: var(--hoverLiClosed);
 }
 
-.open ul li.hide:hover ~ li:not(.hide), .open .hide.isActive ~ li:not(.hide), .open .hide.isActive ~ li:not(.hide){ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
-  background-color: #316db3 !important;
+.open ul li.hide:hover ~ li:not(.hide),
+.open .hide.isActive ~ li:not(.hide) { /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
+  background-color: var(--hoverLiClosed) !important;
 }
 
-.open ul li.hide:hover ~ li:not(.hide) button, .open .hide.isActive ~ li:not(.hide) button, .open .hide.isActive ~ li:not(.hide) button{ /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-OCULTO */
-  color: white !important;
+.open ul li.hide:hover ~ li:not(.hide) button,
+.open .hide.isActive ~ li:not(.hide) button { /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-OCULTO */
+  color: var(--navBarFont) !important;
 }
 
-.open li.hide button:hover, .open .hide.isActive button{ /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
-  transition-delay: 0s;
-  color: #316db3;
+.open li.hide button:hover,
+.open .hide.isActive button { /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+  transition-delay: 0.2s;
+  color: var(--hoverLiClosed);
 }
 
 /* CSS PARA LOS ELEMENTOS INTERNOS DEL SIDEBAR */
@@ -264,7 +273,7 @@ body{
       3 - RIGHT
 */
 
-.contentContainer{
+.contentContainer {
     height: 100%;
     grid-template-rows: 90% 10%; /* CSS PARA TAMAÑOS DEL CONTENIDO Y EL FOOTER */
     overflow: scroll;
@@ -273,11 +282,7 @@ body{
     transition: all 1s ease;
 }
 
-.content {
-  /* height: 100%; */
-}
-
-.footer{
+.footer {
     width: 100%;
     align-items: center;
     grid-template-columns: 1fr 4fr 1fr;
@@ -287,41 +292,41 @@ body{
 
 
 
-/* DEKSTOP */
+/* DESKTOP */
 
 @media (min-width: 990px) {
 
-    .mainContainer{ /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
+    .mainContainer { /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
         display: flex;
     }
 
-    .sideBar{  /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
+    .sideBar {  /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
         width: 80px;
         max-width: 250px;
     }
 
-    .contentContainer{ /* CSS PARA REDEFINIR EL WIDTH DENTRO DEL FLEX PARENT */
+    .contentContainer { /* CSS PARA REDEFINIR EL WIDTH DENTRO DEL FLEX PARENT */
         width: 100%;
     }
 
-    .open{ /* CSS PARA APERTURA DEL SIDEBAR */
+    .open { /* CSS PARA APERTURA DEL SIDEBAR */
         width: 18rem;
     }
 
-    .open ul li .i{ /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
+    .open ul li .i { /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
         margin-right: 1rem;
     }
 
-    .desktop, .desktop *{  /* CSS PARA APARECER ELEMENTOS CLASE DESKTOP */
+    .desktop, .desktop * {  /* CSS PARA APARECER ELEMENTOS CLASE DESKTOP */
         display: inline-block;
     }
 
-    .mobile, .mobile *{ /* CSS PARA DESAPARECER ELEMENTOS CLASE MOBILE */
+    .mobile, .mobile * { /* CSS PARA DESAPARECER ELEMENTOS CLASE MOBILE */
         display: none;
     }
 }
 
-/* DEKSTOP */
+/* DESKTOP */
 
 
 
@@ -329,55 +334,56 @@ body{
 
 @media (max-width: 989px) {
 
-    .topContainer button *{  /* CSS PARA DISMINUIR EL FONTSIZE DE BOTONES EN EL TOPBAR */
+    .topContainer button * {  /* CSS PARA DISMINUIR EL FONTSIZE DE BOTONES EN EL TOPBAR */
         font-size: 0.9rem !important;
     }
 
         
-    .topContainer button,#hamburguer { /* CSS PARA DISMINUIR EL PADDING DE BOTONES EN TOPBAR */
+    .topContainer button,
+    #hamburguer { /* CSS PARA DISMINUIR EL PADDING DE BOTONES EN TOPBAR */
         padding-inline: 1.2rem !important;
     }
 
-    .topContainer h1{ /* CSS PARA DISMINUIR EL FONTSIZE DE H1 EN EL TOPBAR */
+    .topContainer h1 { /* CSS PARA DISMINUIR EL FONTSIZE DE H1 EN EL TOPBAR */
         font-size: 1rem;
     }
 
-    .mainContainer{ /* CSS PARA QUE SIDEBAR FLOTE SOBRE EL CONTENIDO DE LA DERECHA */
+    .mainContainer { /* CSS PARA QUE SIDEBAR FLOTE SOBRE EL CONTENIDO DE LA DERECHA */
       display: grid;
       grid-template-columns: 55px auto; /* CSS PARA DEFINIR TAMAÑO DE SIDEBAR Y CONTENT-CONTAINER */
     }
 
-    .sideBar li .i{ /* CSS PARA DISMINUIR FONTSIZE Y MÁRGENES DE ICONOS EN SIDEBAR */
+    .sideBar li .i { /* CSS PARA DISMINUIR FONTSIZE Y MÁRGENES DE ICONOS EN SIDEBAR */
         margin: 1rem;
         margin-right: 5rem;
         font-size: 0.9rem;
     }
 
-    .sideBar span{ /* CSS PARA DISMINUIR FONTSIZE DE SPAN EN SIDEBAR */
+    .sideBar span { /* CSS PARA DISMINUIR FONTSIZE DE SPAN EN SIDEBAR */
         font-size: 0.8rem;
     }
 
-    .sideBar .hide span{ /* CSS PARA DISMINUIR FONTSIZE DE SPAN EN SIDEBA OCULTOS POR DEFECTO */
+    .sideBar .hide span { /* CSS PARA DISMINUIR FONTSIZE DE SPAN EN SIDEBA OCULTOS POR DEFECTO */
         font-size: 0.6rem !important;
     }
 
-    .open{ /* CSS PARA APERTURA DEL SIDEBAR */
+    .open { /* CSS PARA APERTURA DEL SIDEBAR */
         width: 300%;
     }
 
-    .open .wrapper .i{ /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
+    .open .wrapper .i { /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
         margin-right: 0.5rem;
     }
 
-    .open + .contentContainer{ /* CSS PARA OCULTAR CONTENIDO MIENTRAS SIDEBAR ABIERTO */
+    .open + .contentContainer { /* CSS PARA OCULTAR CONTENIDO MIENTRAS SIDEBAR ABIERTO */
         opacity: 0.15;
     }
     
-    .desktop, .desktop *{  /* CSS PARA DESAPARECER ELEMENTOS CLASE DESKTOP */
+    .desktop, .desktop * {  /* CSS PARA DESAPARECER ELEMENTOS CLASE DESKTOP */
         display: none;
     }
 
-    .mobile, .mobile *{ /* CSS PARA APARECER ELEMENTOS CLASE MOBILE */
+    .mobile, .mobile * { /* CSS PARA APARECER ELEMENTOS CLASE MOBILE */
         display: inline-block;
     }
 

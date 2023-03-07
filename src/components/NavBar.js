@@ -15,7 +15,7 @@ const NavBar = (props) => {
         const active = props.href === path ? 'isActive' : ''
         return (
             <li className={`${active} ${visibility}`}>
-                <button draggable='false' className="text-decoration-none fs-5 usButton" onClick={()=>navigate(props.href)}>
+                <button draggable='false' className="text-decoration-none fs-5 usButton navigationButton" onClick={()=>navigate(props.href)}>
                     <FontAwesomeIcon icon={props.icon} className="i"/>
                     <span>{props.span}</span>
                 </button>
@@ -26,7 +26,7 @@ const NavBar = (props) => {
     const OpenLink=(props)=> {
         return (
             <li className="visible">
-                <button draggable='false' className="text-decoration-none fs-5 usButton" onClick={props.onClick}>
+                <button draggable='false' className="text-decoration-none fs-5 usButton navigationButton" onClick={props.onClick}>
                     <FontAwesomeIcon icon={props.icon} className="i"/>
                     <span>{props.span}</span>
                 </button>
@@ -37,7 +37,7 @@ const NavBar = (props) => {
     return (        
         <div id="sideBar" className={`sideBar user-select-none no-drag ${props.className}`}>
             <div className="wrapper d-flex">
-                <ul className="list-unstyled">
+                <ul className="navList list-unstyled">
 
                     <CustomLink visibility='visible' href='/classrooms' icon={faChalkboard} name='home' span='Classrooms'></CustomLink>
                     <CustomLink visibility='visible'  href='/teachers' icon={faChalkboardTeacher} name='home' span='Teachers'></CustomLink>
