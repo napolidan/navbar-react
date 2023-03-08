@@ -8,17 +8,17 @@ const TopContainer = (props) => {
         <div className="topContainer d-flex flex-row justify-content-between text-center">
             <div className="left d-flex flex-row">
 
-                <div className="paper">
+                <div className="paper opacity-0">
                     <button><FontAwesomeIcon icon={faPaperPlane} className="fa-fw fs-5"/></button>
                 </div>
 
 
                 <div className="d-flex flex-row">
                     <button id="hamburguer" onClick={() => props.onLogoClick()}>
-                        <FontAwesomeIcon icon={faArrowRight} className="hamburguerIcon fa-fw fs-5"/>
-                        <FontAwesomeIcon icon={faBars} className="hamburguerIcon fa-fw fs-5 iconHiding"/>
+                        <FontAwesomeIcon icon={faArrowRight} className="hamburguerIcon fa-fw fs-5 iconHiding"/>
+                        <FontAwesomeIcon icon={faBars} className="hamburguerIcon" size="2x"/>
                     </button>
-                    <h1>Classrooms</h1>
+                    <h1>Dashboards</h1>
                 </div>
                 
 

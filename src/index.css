@@ -1,13 +1,26 @@
 /* CSS PARA COSAS GENERALES */
 
 :root {
-  --topBar: #754888;
-  --hoverLi: #754888;
-  --hoverLiClosed: #316db3;
+  --topBar: white;
+  --activeLi: #56b6ee;
+  --activeParent: rgb(9, 28, 153);
+  --hoverLi: #36C95F;
+  --hoverLiClosed: #56b6ee;
   --topBarFont: #f7fbf8;
-  --navBar: #e6dbe9;
+  --navBar: rgb(224 251 237);
   --navBarFont: white;
   --fontNav: #7e7e7e;
+  --bodyColor: #ebf0ee;
+  --primaryColor: #36C95F;
+  --iconColor: rgb(41 63 118);
+}
+
+.primary-color{
+  color: var(--primaryColor);
+}
+
+.primary-icon{
+  color: var(--iconColor);
 }
 
 *{
@@ -43,7 +56,7 @@ body{
 /* CSS PARA EL TOP CONTAINER */
 
 .topContainer{
-    height: 5%;
+    height: 8%;
     width: 100vw;
     background-color: var(--topBar);
     color: var(--topBarFont);
@@ -65,12 +78,7 @@ body{
 */
 
 .mainContainer {
-    height: 95%;
-}
-
-.topContainer h1 {
-    font-size: 1.2rem;
-    height: min-content;
+    height: 92%;
 }
 
 /* CSS PARA EL HEIGHT DEL TOP CONTAINER Y EL MAIN CONTAINER (DEBEN SUMAR 100%) */
@@ -111,7 +119,8 @@ body{
 	cursor: pointer;
 	outline: inherit;
   width: fit-content;
-  height: 100%;
+  color: var(--iconColor);
+  display: inline-block;
 }
 
 .iconHiding {
@@ -125,6 +134,13 @@ body{
 #hamburguer {
     padding-inline: 1rem;
 }
+
+.topContainer h1 {
+  font-size: 1.5rem;
+  height: min-content;
+  color: black;
+}
+
 
 /* CSS PARA LOS ELEMENTOS INTERNOS DEL TOP CONTAINER */
 
@@ -201,8 +217,14 @@ body{
 }
 
 .sideBar span { /* CSS PARA TEXTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  text-align: left;
   display: inline-block;
+}
+
+.sideBar li:not(.hide) span {
+  max-width: 300px;
+  line-height: 1.5rem;
 }
 
 .sideBar li.hide .i {  /* CSS PARA ICONOS INVISIBLES DE ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- CERRADO-OCULTO -- ABIERTO-OCULTO */
@@ -213,48 +235,83 @@ body{
   font-size: 0.9rem;
 }
 
-.sideBar li:hover:not(.hide),
 .isActive:not(.hide),
 .hide.isActive ~ li:not(.hide) { /* CSS PARA HOVER DE ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO-VISIBLE */ 
+  background-color: var(--activeLi) !important;
+}
+
+.sideBar li:not(.hide):hover {
   background-color: var(--hoverLi);
 }
 
 .sideBar li:not(.hide):hover *,
 .isActive:not(.hide) *,
 .hide.isActive ~ li:not(.hide) * { /* CSS PARA HOVER DE LINKS DEL NAVBAR VISIBLES POR DEFECTO -- CERRADO */ 
-  color: var(--navBarFont) !important;
+  color: var(--navBarFont);
 }
 
 /* ELEMENTOS Y LINKS DEL NAVBAR ABIERTO ESTÁN DENTRO DE LOS MEDIA QUERIES */ 
 
-.open li.hide { /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
-  height: 3.5rem;
+div:not(.openList) .hide span{
+  /* color: var(--navBar); */
+  z-index: -10;
+}
+
+.open .openList li.hide { /* CSS PARA ELEMENTOS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+  height: 2.5rem;
   transition-delay: 0.03s !important;
 }
 
-.open li.hide button { /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+.open .openList li.hide button { /* CSS PARA LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
   transition-delay: 0.2s;
   color: var(--fontNav);
 }
 
-.open ul li:hover:not(.hide),
+.open ul li:hover:not(.hide):not(.isActive) {
+  background-color: var(--navBar) !important;
+}
+
+
+.open.sideBar ul li:hover:not(.hide):not(.isActive) span{
+  color: var(--activeParent);
+}
+
+.open.sideBar ul li:hover:not(.hide):not(.isActive) path{
+  color: var(--activeParent);
+}
+
 .open .isActive:not(.hide) { /* CSS PARA HOVER ELEMENTOS DEL NAVBAR VISIBLES POR DEFECTO -- ABIERTO-OCULTO */
   background-color: var(--hoverLiClosed);
 }
 
-.open ul li.hide:hover ~ li:not(.hide),
-.open .hide.isActive ~ li:not(.hide) { /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
-  background-color: var(--hoverLiClosed) !important;
+.open ul li.hide:hover ~ li:not(.hide) span{
+  color: var(--activeParent);
 }
 
-.open ul li.hide:hover ~ li:not(.hide) button,
+.open ul li.hide:hover ~ li:not(.hide) path{
+  color: var(--activeParent) !important;
+}
+
+.open.sideBar .hide.isActive ~ li:not(.hide) { /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-VISIBLE */
+   background-color: var(--activeLi) !important;
+}
+
+.open.sideBar .hide.isActive ~ li:not(.hide) path {
+  color: white !important; 
+}
+
+.open .hide.isActive ~ li:not(.hide) span {
+  color: white !important; 
+}
+
+.open ul .hide:hover ~ li:not(.hide) button,
 .open .hide.isActive ~ li:not(.hide) button { /* CSS PARA HOVER DE SUB ELEMENTOS DEL NAVBAR QUE ACTIVAN AL ELEMENTO PADRE -- ABIERTO-OCULTO */
   color: var(--navBarFont) !important;
 }
 
-.open li.hide button:hover,
-.open .hide.isActive button { /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
-  transition-delay: 0.2s;
+.open .openList li.hide button:hover,
+.open .openList .hide.isActive button { /* CSS PARA HOVER DE SUB LINKS DEL NAVBAR OCULTOS POR DEFECTO -- ABIERTO-OCULTO */
+  transition: color 0s;
   color: var(--hoverLiClosed);
 }
 
@@ -277,7 +334,7 @@ body{
     height: 100%;
     grid-template-rows: 90% 10%; /* CSS PARA TAMAÑOS DEL CONTENIDO Y EL FOOTER */
     overflow: scroll;
-    background-color: white;
+    background-color: var(--bodyColor);
     opacity: 100%;
     transition: all 1s ease;
 }
@@ -302,7 +359,7 @@ body{
 
     .sideBar {  /* CSS PARA QUE SIDEBAR EMPUJE CONTENIDO HACIA LA DERECHA */
         width: 80px;
-        max-width: 250px;
+        /* max-width: 250px; */
     }
 
     .contentContainer { /* CSS PARA REDEFINIR EL WIDTH DENTRO DEL FLEX PARENT */
@@ -310,7 +367,7 @@ body{
     }
 
     .open { /* CSS PARA APERTURA DEL SIDEBAR */
-        width: 18rem;
+        width: 32rem;
     }
 
     .open ul li .i { /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
@@ -368,7 +425,7 @@ body{
     }
 
     .open { /* CSS PARA APERTURA DEL SIDEBAR */
-        width: 300%;
+        width: 320%;
     }
 
     .open .wrapper .i { /* CSS PARA MOSTRAR TEXTOS EN EL SIDEBAR ABIERTO */
