@@ -1,18 +1,23 @@
 /* CSS PARA COSAS GENERALES */
 
 :root {
-  --topBar: white;
-  --activeLi: #56b6ee;
-  --activeParent: rgb(9, 28, 153);
-  --hoverLi: #36C95F;
-  --hoverLiClosed: #56b6ee;
-  --topBarFont: #f7fbf8;
-  --navBar: rgb(224 251 237);
-  --navBarFont: white;
-  --fontNav: #7e7e7e;
-  --bodyColor: #ebf0ee;
-  --primaryColor: #36C95F;
-  --iconColor: rgb(41 63 118);
+  --topBar: rgb(52, 33, 33);
+  --navBar: #ff673d;
+  --bodyColor: rgb(245, 192, 154); /* color del contenido */
+
+  --activeLi: #ff8f70; /* background del seleccionado (abierto) */
+  --hoverLi: rgba(54, 201, 95, 0) /* background del seleccionado (cerrado) */;
+
+  --activeParent: #ffd9ae  /* color del padre en hover */;
+  --hoverLiClosed: #ffd9ae /* color de hijo en hover */;
+
+  --topBarFont: #ff673d;
+  --navBarFont: #ffd9ae;
+  --fontNav: #ffb45e;
+  --primaryColor: #ff673d;
+  --iconColor: #ffb45e;
+
+  
   --titleColor: rgb(153, 153, 153);
 }
 
@@ -30,12 +35,15 @@
 
 body{
   margin: 0;
+  background: linear-gradient(45deg, rgba(254,204,255,1) 0%, rgba(206,124,255,0.75) 25%, rgba(208,171,255,1) 50%, rgba(133,136,255,0.75) 75%, rgba(3,73,255,1) 100%);
 }
 
 #root{
   height: 100dvh; /* UNIDAD DE MEDIDA QUE TOMA EN CUENTA EL VIEWPORT DEL DISPOSITIVO */
   -webkit-user-drag: none;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
 }
 
 .no-drag{
@@ -57,7 +65,8 @@ body{
 /* CSS PARA EL TOP CONTAINER */
 
 .topContainer{
-    height: 8%;
+    height: 4rem;
+    min-height: 4rem;
     width: 100vw;
     background-color: var(--topBar);
     color: var(--topBarFont);
@@ -79,7 +88,7 @@ body{
 */
 
 .mainContainer {
-    height: 92%;
+    flex: 1;
 }
 
 /* CSS PARA EL HEIGHT DEL TOP CONTAINER Y EL MAIN CONTAINER (DEBEN SUMAR 100%) */
@@ -111,7 +120,7 @@ body{
     margin: auto;
 }
 
-#hamburguer, .topContainer button, button { /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR */
+#hamburguer, .topContainer button, button { /* CSS PARA BOTONES SIN ESTILO EN EL TOPBAR Y ESTILADO DE BOTONES EN SIDEBAR */
   background: none;
 	color: inherit;
 	border: none;
@@ -128,18 +137,28 @@ body{
   display: none;
 }
 
-.topContainer button {
-  padding-inline: 1.5rem;
+#hamburguer {
+    width: 75px;
+    font-size: 1.4rem;
 }
 
 #hamburguer {
-    padding-inline: 1rem;
+  color: var(--iconColor);
+}
+
+.paper {
+  margin-left: 1rem;
+  gap: 0.1rem;
+}
+
+.paper button{
+  color: var(--topBarFont)
 }
 
 .topContainer h1 {
   font-size: 1.5rem;
   height: min-content;
-  color: black;
+  color: var(--topBarFont);
 }
 
 

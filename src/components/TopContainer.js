@@ -1,5 +1,5 @@
 import React from "react";
-import { faArrowRight, faPaperPlane, faBars } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faPaperPlane, faBars, faMicrochip } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const TopContainer = (props) => {
@@ -8,17 +8,18 @@ const TopContainer = (props) => {
         <div className="topContainer d-flex flex-row justify-content-between text-center">
             <div className="left d-flex flex-row">
 
-                <div className="paper opacity-0">
-                    <button><FontAwesomeIcon icon={faPaperPlane} className="fa-fw fs-5"/></button>
+                <div className="hamburguer">
+                    <button id="hamburguer" onClick={() => props.onLogoClick()}>
+                        <FontAwesomeIcon icon={faArrowRight} className="hamburguerIcon fa-fw fs-5 iconHiding"/>
+                        <FontAwesomeIcon icon={faBars} className="hamburguerIcon"/>
+                    </button>
                 </div>
 
 
-                <div className="d-flex flex-row">
-                    <button id="hamburguer" onClick={() => props.onLogoClick()}>
-                        <FontAwesomeIcon icon={faArrowRight} className="hamburguerIcon fa-fw fs-5 iconHiding"/>
-                        <FontAwesomeIcon icon={faBars} className="hamburguerIcon" size="2x"/>
-                    </button>
-                    <h1>Dashboards</h1>
+                <div className="d-flex flex-row paper">
+                    
+                    <button><FontAwesomeIcon icon={faMicrochip} className="fa-fw fs-5"/></button>
+                    <h1>NavBr</h1>
                 </div>
                 
 
@@ -26,7 +27,7 @@ const TopContainer = (props) => {
             
             <div className="right d-flex pe-2">
                 <div className="round d-flex">
-                    <h6>Ma</h6>
+                    <h6>Da</h6>
                 </div>
             </div>
         </div>
